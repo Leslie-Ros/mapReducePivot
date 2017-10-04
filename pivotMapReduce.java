@@ -18,11 +18,11 @@
 public void reduce(IntWritable key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException {
           Text output = new Text();
+          String ligne ='';
           for (Text val : values) {
-            String ligne ='';
             ligne += val.toString() + ',';
-            ligne = ligne.substring(0, ligne.length() - 1)
           }
+          ligne = ligne.substring(0, ligne.length() - 1)
           output.set(ligne);
           context.write(key,output);
         }
